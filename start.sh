@@ -9,14 +9,9 @@ kubectl delete configmap canasta-env 2>/dev/null
 kubectl create configmap canasta-settings --from-file=./settings/
 kubectl create configmap canasta-config --from-file=./config/
 
-# Ensure host directories exist for PersistentVolumes
-mkdir -p /canasta/persistent/caddy-data
-mkdir -p /canasta/persistent/mysql-data
-mkdir -p /canasta/persistent/sitemap-data
-mkdir -p /canasta/persistent/varnish-data
-mkdir -p /canasta/config-data/_initdb
-
 kubectl create configmap canasta-env --from-env-file=.env
 
 # Create all the Kubernetes deployments, services and related objects
+kubectl apply -f Kubernetes/persistent-volumes.yaml
+
 kubectl apply -f Kubernetes/
