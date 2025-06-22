@@ -17,7 +17,7 @@ kind: Service
 metadata:
   name: caddy-lb
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: http-caddy
     port: 80
@@ -45,6 +45,8 @@ spec:
       labels:
         app: caddy
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: caddy
         resources: {}
