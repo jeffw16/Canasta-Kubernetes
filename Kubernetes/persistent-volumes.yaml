@@ -10,6 +10,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /canasta/persistent/caddy-data
+    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -23,6 +24,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /canasta/persistent/mysql-data
+    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -36,6 +38,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /canasta/persistent/sitemap-data
+    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -49,3 +52,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /canasta/persistent/varnish-data
+    type: DirectoryOrCreate
